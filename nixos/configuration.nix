@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs ? import (fetchTarball "github:NixOS/nixpkgs/nixos-unstable"), ... }:
 
 {
   imports =
