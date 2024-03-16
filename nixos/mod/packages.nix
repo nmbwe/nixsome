@@ -4,14 +4,13 @@
     #neovim.url = ""
     environment = {
         systemPackages = with pkgs; [
+            #bitcoin
+            bitcoin
             firefox
-	    #hyprland
-            kitty
             #Ide's and Pde's
             nano
             vscode
             neovim
-            
             #Socials
             discord
             mullvad-vpn

@@ -12,6 +12,7 @@
           ./nixos/mod/de.nix
           ./nixos/mod/system.nix
           ./nixos/mod/packages.nix
+          ./nixos/mod/bitcoin.nix
           ];
       };
   };
