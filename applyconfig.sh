@@ -12,5 +12,5 @@ echo "Updating NixOS Configuration with the actual flake.nix"
 cp /etc/nixos/hardware-configuration.nix ./nixos/
 
 ## copy the whole directorie so i dont need to handle with paths now.
-cp ./* /etc/nixos/
+cp -r ./* /etc/nixos/
 nixos-rebuild switch
