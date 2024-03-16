@@ -5,7 +5,12 @@
 
 ## Requires sudo permition
 
-echo "Run with sudo"
+echo "Updating NixOS Configuration with the actual flake.nix"
 
-cp ./nixos/configuration.nix /etc/nixos/
+## Copy the system aproprieate hardware-config.nix to this repo to copy back later
+
+cp /etc/nixos/hardware-configuration.nix ./nixos/
+
+## copy the whole directorie so i dont need to handle with paths now.
+cp ./* /etc/nixos/
 nixos-rebuild switch
