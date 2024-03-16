@@ -4,7 +4,8 @@
     #neovim.url = ""
     environment = {
         systemPackages = with pkgs; [
-            #hyprland
+            firefox
+	    #hyprland
             kitty
             #Ide's and Pde's
             nano
@@ -26,6 +27,6 @@
             zsh
             tmux
             gnupg
-        ]
-    }
+        ];
+    };
 }

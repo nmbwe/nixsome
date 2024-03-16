@@ -2,7 +2,7 @@
 {
   imports =
   [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+      ../hardware-configuration.nix
   ];
   ##Read it
   networking.hostName = "TheChosenOne";
@@ -30,7 +30,6 @@
 
   #Fiat Piak 
   services.flatpak.enable = true;
-  
 
   #Who, in 2024 let someone else use its computer ? BEEING AN NIXOS ?????????
   users.users.joaoleal = {
@@ -49,9 +48,7 @@
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
-
-  system.copySystemConfiguration = true;
-
+  
   #Do not Change.
   system.stateVersion = "23.11"; # Did you read the comment? Yeah, i did.
 

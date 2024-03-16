@@ -1,6 +1,9 @@
 {config, lib, pkgs, ...}:
 {
-  environment.gnome.enable = true;  
+  services.xserver.enable = true;
+  services.xserver.displayManager.gdm.enable = true;
+  services.xserver.displayManager.gdm.wayland = true;
+  services.xserver.desktopManager.gnome.enable = true;
   environment.gnome.excludePackages = (with pkgs; [
   gnome-photos
   gnome-tour
