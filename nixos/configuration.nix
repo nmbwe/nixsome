@@ -1,4 +1,4 @@
-{ config, lib, pkgs ? import (fetchTarball "github:NixOS/nixpkgs/nixos-unstable"), ... }:
+{ config, lib, pkgs, ... }:
 
 {
   imports =
@@ -8,7 +8,7 @@
 ##Read it
 networking.hostName = "TheChosenOne";
 
-  # Use the systemd-boot EFI boot loader.
+# Use the systemd-boot EFI boot loader.
 boot.loader.systemd-boot.enable = true;
 boot.loader.efi.canTouchEfiVariables = true;
 
@@ -53,7 +53,7 @@ services.xserver.libinput.enable = true;
 services.flatpak.enable = true;
  
 
-#Who, im 2024 let someone else use its computer ? BEEING AN NIXOS ?????????
+#Who, in 2024 let someone else use its computer ? BEEING AN NIXOS ?????????
 users.users.joaoleal = {
 	isNormalUser = true;
 	extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.

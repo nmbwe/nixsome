@@ -5,25 +5,17 @@ Todos:
     
     - [X] Alacritty
       - [X] TMUX 
-      - [X] zshell  
-   
+      - [X] zshell 
     - [ ] Editor
-      
       - [ ] NVIM
         - [ ] LSPS
         - [ ] BINDS  
-          
-      
-  
     - [ ] Languages
-    
       - [ ] Lua
       - [ ] Rust
       - [ ] C/C++
       - [ ] HTML/CSS/JS
       - [ ] Python
-      
-  
   - [ ] flakes and home manager
     - [ ] Maybe a script.sh to "- onclick install"
   - [ ] Hyprland
