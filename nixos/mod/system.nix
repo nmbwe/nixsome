@@ -9,6 +9,14 @@
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+
+  ##some amd configurations
+  boot.initrd.kernelModules = [ "amdgpu" ];
+  hardware.opengl.extraPackages = with pkgs; [
+    amdvlk
+  ];
+  environment.variables.AMD_VULKAN_ICD = "RADV";
+
   # enables flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
@@ -46,8 +54,13 @@
   #};
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
+  /*   networking.firewall = {
+    enable = true; 
+    allowedTCPPorts = [];
+    allowedUDPPorts = [ {from = 8000; to = 10000;} ];
+  };
+   */
+   
   
   #Do not Change.
   system.stateVersion = "23.11"; # Did you read the comment? Yeah, i did.
