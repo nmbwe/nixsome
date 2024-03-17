@@ -7,13 +7,6 @@
 	    enable = true;
 	    gamescopeSession = {
 		    enable = true;
-		    args = [
-                "-F fsr"
-                "-h 540"
-                "-H 1080"
-                "-S 1"
-                "-b"
-            ];
 	    };	
     };
 	
