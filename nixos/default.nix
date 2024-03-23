@@ -1,9 +1,9 @@
 {
   imports = [
-    ./nixos/mod/default_shell.nix
-    ./nixos/mod/packages.nix
-    ./nixos/mod/bitcoin.nix
-    ./nixos/mod/de.nix
-    ./nixos/mod/system.nix
+    ./mod/default_shell.nix
+    ./mod/packages.nix
+    ./mod/bitcoin.nix
+    ./mod/de.nix
+    ./mod/system.nix
   ];
 }

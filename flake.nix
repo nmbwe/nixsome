@@ -11,10 +11,7 @@
     nixosConfigurations.TheChosenOne = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
-        ./nixos/mod/de.nix
-        ./nixos/mod/system.nix
-        ./nixos/mod/packages.nix
-        ./nixos/mod/bitcoin.nix
+        ./nixos
       ];
     };
   };
