@@ -37,12 +37,12 @@
   services.xserver.libinput.enable = true;
 
   #Fiat Piak 
-  services.flatpak.enable = true;
+  services.flatpak.enable = true; 
 
   #Who, in 2024 let someone else use its computer ? BEEING AN NIXOS ?????????
   users.users.joaoleal = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "docker" ]; # Enable ‘sudo’ for the user.
   };
   #SSH Settings. Finish Later
   #services.openssh = {
