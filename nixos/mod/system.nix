@@ -7,8 +7,11 @@
   ##Read it
   networking.hostName = "TheChosenOne";
   # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
+  #boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.grub.enable = true;
+  boot.loader.grub.device = "nodev";
+  boot.loader.grub.useOSProber = true;
 
   ##some amd configurations
   boot.initrd.kernelModules = [ "amdgpu" ];
@@ -33,6 +36,12 @@
   sound.enable = true;
   hardware.pulseaudio.enable = true;
 
+  #Enable cachix
+  nix.settings = {
+    substituters = [ "https://ezkea.cachix.org" ];
+    trusted-public-keys = [ "ezkea.cachix.org-1:ioBmUbJTZIKsHmWWXPe1FSFbeVe+afhfgqgTSNd34eI=" ];
+  };
+
   #Ensure suport for mousepad
   services.xserver.libinput.enable = true;
 
@@ -44,6 +53,7 @@
     isNormalUser = true;
     extraGroups = [ "wheel" "docker" ]; # Enable ‘sudo’ for the user.
   };
+  virtualisation.docker.enable = true;
   #SSH Settings. Finish Later
   #services.openssh = {
   #	enable = true;
