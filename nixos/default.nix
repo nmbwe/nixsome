@@ -5,5 +5,6 @@
     ./mod/bitcoin.nix
     ./mod/de.nix
     ./mod/system.nix
+    ./hardware-configuration.nix
   ];
 }
