@@ -9,9 +9,12 @@
   # Use the systemd-boot EFI boot loader.
   #boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.grub.enable = true;
-  boot.loader.grub.device = "nodev";
-  boot.loader.grub.useOSProber = true;
+  boot.loader.grub = {
+    enable = true;
+    device = "nodev";
+    useOSProber = true;
+    efiSupport = true;
+  };
 
   ##some amd configurations
   boot.initrd.kernelModules = [ "amdgpu" ];
@@ -48,7 +51,7 @@
   #Fiat Piak 
   services.flatpak.enable = true; 
 
-  #Who, in 2024 let someone else use its computer ? BEEING AN NIXOS ?????????
+  #Who, in 2024 let someone else use its computer ?
   users.users.joaoleal = {
     isNormalUser = true;
     extraGroups = [ "wheel" "docker" ]; # Enable ‘sudo’ for the user.
