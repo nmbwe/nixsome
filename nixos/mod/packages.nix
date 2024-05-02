@@ -15,6 +15,10 @@
       mullvad
       signal-desktop
       #dev tools
+      cargo 
+      rustup
+      rustc
+      python3
       git
       alacritty
       direnv
