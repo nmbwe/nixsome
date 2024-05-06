@@ -1,6 +1,9 @@
 { config, pkgs, ... }:
 
 {
+    imports = [
+        ./alacritty/alacritty.nix
+    ];
     #redundant, but whatever... 
     home.username = "joaoleal";
     home.homeDirectory = "/home/joaoleal";

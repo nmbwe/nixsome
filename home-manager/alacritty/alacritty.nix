@@ -11,49 +11,48 @@
       font.italic.family = "Monospace";
 
       # Colors
-      colors = {
+    colors = {
         primary = {
-          background = "#282828";
-          foreground = "#dddddd";
+            background = "#282828";
+            foreground = "#ebdbb2";
         };
-        cursor = {
-          text = "#aaaaaa";
-          cursor = "#ffffff";
-        };
+
         normal = {
-          black = "#444444";
-          red = "#ff0000";
-          green = "#00ff00";
-          yellow = "#ffff00";
-          blue = "#0000ff";
-          purple = "#ff00ff";
-          cyan = "#00ffff";
-          white = "#ffffff";
+            black = "#282828";
+            red = "#cc241d";
+            green = "#98971a";
+            yellow = "#d79921";
+            blue = "#458588";
+            magenta = "#b16286";
+            cyan = "#689d6a";
+            white = "#a89984";
         };
+
         bright = {
-          black = "#666666";
-          red = "#ff6666";
-          green = "#33ff33";
-          yellow = "#ffff66";
-          blue = "#6666ff";
-          purple = "#ff66ff";
-          cyan = "#66ffff";
-          white = "#ffffff";
+            black = "#928374";
+            red = "#fb4934";
+            green = "#b8bb26";
+            yellow = "#fabd2f";
+            blue = "#83a598";
+            magenta = "#d3869b";
+            cyan = "#8ec07c";
+            white = "#ebdbb2";
         };
-      };
+    };
 
       # Window settings
-      window.dimensions = {
-        columns = 100;
-        lines = 30;
+      window =
+      { dimensions = {
+          columns = 100;
+          lines = 30;
+        };
+        dynamic_padding = true;
+        decorations = "none"; 
+        startup_mode = "Maximized";
       };
-
-      # Scrollback settings
-      scrollback.lines = 10000;
 
       # Other settings
       live_config_reload = true;
-      dynamic_title = true;
     };
   };
 }
