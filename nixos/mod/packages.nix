@@ -1,8 +1,9 @@
-{ config, pkgs ? import (fetchTarball "github:NixOS/nixpkgs/nixos-unstable"), ... }:
+{ config, pkgs ? import (fetchTarball "github:NixOS/nixpkgs/nixos-unstable"),... }:
 {
   
   environment = {
     systemPackages = with pkgs; [
+      home-manager
       steam
       distrobox
       #bitcoin

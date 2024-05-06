@@ -2,7 +2,7 @@
 {
   imports =
   [ # Include the results of the hardware scan.
-      ../hardware-configuration.nix
+      ../hardware-configuration.nix  
   ];
   ##Read it
   networking.hostName = "TheChosenOne";
@@ -45,6 +45,9 @@
     trusted-public-keys = [ "ezkea.cachix.org-1:ioBmUbJTZIKsHmWWXPe1FSFbeVe+afhfgqgTSNd34eI=" ];
   };
 
+  #support for mullvad
+  services.mullvad-vpn.enable = true;
+
   #Ensure suport for mousepad
   services.xserver.libinput.enable = true;
 
@@ -54,8 +57,11 @@
   #Who, in 2024 let someone else use its computer ?
   users.users.joaoleal = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "docker" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "docker" "maintainer"]; # Enable ‘sudo’ for the user.
   };
+  systemd.tmpfiles.rules = [
+  "d /etc/nixos 775 - joaoleal maintainer"
+  ];
   virtualisation.docker.enable = true;
   #SSH Settings. Finish Later
   #services.openssh = {
@@ -73,8 +79,7 @@
     allowedUDPPorts = [ {from = 8000; to = 10000;} ];
   };
    */
-   
-  
+
   #Do not Change.
   system.stateVersion = "23.11"; # Did you read the comment? Yeah, i did.
 
