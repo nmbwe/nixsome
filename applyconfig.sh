@@ -9,13 +9,13 @@ sleep 1 && clear
 if [ -d "$HOME/.config" ]; then
     cp -r ./home-manager/ "$HOME/.config/"
     #/home/joaoleal/nixsome/nixos
-    nixos-rebuild --use-remote-sudo -I nixos-config=/home/joaoleal/nixsome/nixos switch > /dev/null
+    nixos-rebuild --use-remote-sudo --quiet switch
     
-    home-manager switch > /dev/null
+    home-manager switch
 
-    home-manager expire-generations 7d > /dev/null
+    home-manager expire-generations 7d
     
-    nix-collect-garbage --delete-older-than 4d > /dev/null
+    nix-collect-garbage --delete-older-than 4d
     clear
     echo "Done my bro"
 else
