@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 
 {
+ 
     imports = [
         ./alacritty/alacritty.nix
     ];
@@ -9,4 +10,5 @@
     home.homeDirectory = "/home/joaoleal";
     home.stateVersion = "23.11";
     programs.home-manager.enable = true;
+    home.enableNixpkgsReleaseCheck = false;
 }

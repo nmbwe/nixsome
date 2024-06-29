@@ -5,7 +5,10 @@
       ../hardware-configuration.nix  
   ];
   ##Read it
-  networking.hostName = "TheChosenOne";
+  networking = {
+    hostName = "TheChosenOne";
+    networkmanager.dns = "systemd-resolved";
+    };
   # Use the systemd-boot EFI boot loader.
   #boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -16,13 +19,18 @@
     efiSupport = true;
   };
 
+  services.pcscd.enable = true;
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+  };
+
   ##some amd configurations
   boot.initrd.kernelModules = [ "amdgpu" ];
   hardware.opengl.extraPackages = with pkgs; [
     amdvlk
   ];
   environment.variables.AMD_VULKAN_ICD = "RADV";
-
   # enables flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
@@ -46,13 +54,20 @@
   };
 
   #support for mullvad
-  services.mullvad-vpn.enable = true;
+  services = {
+    mullvad-vpn.enable = true;
+    #Ensure suport for mousepad
+    libinput.enable = true;
+    #Fiat Piak
+    flatpak.enable = true;
+    #DNS go brr
+    resolved.enable = true;
+    
+  };
 
-  #Ensure suport for mousepad
-  services.xserver.libinput.enable = true;
+  
 
-  #Fiat Piak 
-  services.flatpak.enable = true; 
+   
 
   #Who, in 2024 let someone else use its computer ?
   users.users.joaoleal = {
@@ -73,12 +88,10 @@
   #};
 
   # Open ports in the firewall.
-  /*   networking.firewall = {
+  networking.firewall = {
     enable = true; 
-    allowedTCPPorts = [];
-    allowedUDPPorts = [ {from = 8000; to = 10000;} ];
+    allowedTCPPorts = [ 38332 ];
   };
-   */
 
   #Do not Change.
   system.stateVersion = "23.11"; # Did you read the comment? Yeah, i did.

@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, nixpkgs, ... }:
 {
   #all bitcoin configuration goes here
   services.bitcoind.joaoleal = {
