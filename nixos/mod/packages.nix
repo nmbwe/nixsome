@@ -1,4 +1,4 @@
-{ config, nixpkgs, pkgs,... }:
+{ config, pkgs,... }:
 {
 environment.systemPackages = with pkgs; [
     gnupg
@@ -9,7 +9,11 @@ environment.systemPackages = with pkgs; [
     sparrow
     firefox
     tor-browser
-    
+    lutris
+    wine
+    gamescope
+    syncthing-tray
+    syncthing
     #Ide's and Pde's
     vscode
 

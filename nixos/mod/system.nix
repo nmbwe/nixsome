@@ -15,12 +15,12 @@
   boot.loader.grub = {
     enable = true;
     device = "nodev";
-    useOSProber = true;
     efiSupport = true;
   };
 
   services.pcscd.enable = true;
-  programs.gnupg.agent = {
+  programs.nix-ld.enable = true;
+	programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
   };
