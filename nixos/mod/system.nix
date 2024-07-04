@@ -43,8 +43,6 @@
   };
 
   time.timeZone = "America/Sao_Paulo";
-  # Enable sound.
-  sound.enable = true;
   hardware.pulseaudio.enable = true;
 
   #Enable cachix
