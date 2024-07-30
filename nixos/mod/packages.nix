@@ -5,11 +5,17 @@
     podman
     home-manager
     just
+    fd
+    ripgrep
+    gcc
+    vscode
     sparrow
     firefox
     tor
+    luajitPackages.luarocks-nix
     tor-browser
     lutris
+    neovim
     wine
     gamescope
     distrobox

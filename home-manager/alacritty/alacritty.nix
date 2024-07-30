@@ -5,10 +5,10 @@
     enable = true;
     settings = {
       # Font settings
-      font.size = 14;
-      font.normal.family = "Source Code Pro";
-      font.bold.family = "Source Code Pro";
-      font.italic.family = "Source Code Pro";
+      font.size = 10;
+      font.normal.family = "Agave Nerd Font Mono";
+      font.bold.family = "Agave Nerd Font Mono";
+      font.italic.family = "Agave Nerd Font Mono";
 
       # Colors
       colors = {
