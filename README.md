@@ -19,11 +19,10 @@ and im up and running. :)
 - [ ] justfile with 
   - [ ] chronjob setup for backup with veracrypt on a lukd device 
   - [ ] maybe something that installs distrobox and make distros.ini up and running in any distro.(maybe using nix for that).
-- [ ] distroboxes
-  - [ ] for managing secrects (has shit like ykman an keepass)
-  - [ ] Rust dev
-  - [ ] general(python) Dev
-  - [ ] for configuring my SplIIT KeyYBuArD  
+- [X] distroboxes
+  - [X] for managing secrects (has shit like ykman an keepass)
+  - [X] Rust dev
+  - [X] general(python) Dev
 
 - [ ] NixOs laptop
   - [ ] Barrier
