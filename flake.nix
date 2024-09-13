@@ -12,15 +12,12 @@
         modules = [
           nixos-wsl.nixosModules.default
           {
+            imports = [./usbip.nix];
             system.stateVersion = "24.05";
-
-            usbpass = import ./yubikey.nix;
-
             wsl = {
               enable = true;
               defaultUser = "JoaoLeal";
-              usbpass = {
-                enable = true; 
+              usbip = {
                 autoAttach = ["2-8"];
               };
             };
@@ -28,12 +25,12 @@
             programs = {
               nix-ld = {
                 enable = true; 
-                package = pkgs.nix-ld-rs; 
+                package = nixpkgs.nix-ld-rs; 
               };
             };
 
-            enviroment.systemPackages =  with pkgs;[
-              wget 
+            environment.systemPackages = [
+              nixpkgs.wget
             ];
 
             nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -44,5 +41,5 @@
     };
   };
 
-  description = "Remember the DISSSSS ?"
+  description = "Remember the DISSSSS ?";
 }
