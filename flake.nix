@@ -14,9 +14,15 @@
           {
             system.stateVersion = "24.05";
 
+            usbpass = import ./yubikey.nix;
+
             wsl = {
               enable = true;
               defaultUser = "JoaoLeal";
+              usbpass = {
+                enable = true; 
+                autoAttach = ["2-8"];
+              };
             };
 
             programs = {
