@@ -12,16 +12,6 @@ with lib; let
 
   cfg = config.wsl.usbip;
 in {
-  options.wsl.usbip = with types; {
-    enable = mkEnableOption "USB/IP integration";
-    autoAttach = mkOption {
-      type = listOf str;
-      default = [];
-      example = ["4-1"];
-      description = "Auto attach devices with provided Bus IDs.";
-    };
-  };
-
   config = mkIf (config.wsl.enable && cfg.enable) {
     environment.systemPackages = [
       pkgs.linuxPackages.usbip
@@ -50,7 +40,6 @@ in {
         script = ''
           busid="$1"
           ip="$(grep nameserver /etc/resolv.conf | cut -d' ' -f2)"
-
           echo "Starting auto attach for busid $busid on $ip."
           source ${usbipd-win-auto-attach} "$ip" "$busid"
         '';
