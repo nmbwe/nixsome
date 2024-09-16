@@ -14,7 +14,6 @@
           {
             imports = [./main.nix];
             system.stateVersion = "24.05";
-         
           }
         ];
       };

@@ -1,19 +1,9 @@
 { config, pkgs, ... }:
 
 {
-  imports = [
-    ./usbip.nix
-  ];
-
-
-
   wsl = {
     enable = true;
     defaultUser = "JoaoLeal";
-    usbip = {
-      enable = true;
-      autoAttach = ["2-8"];
-    };
   };
 
  
@@ -22,9 +12,14 @@
     vim
     just 
     distrobox
-    
-  ];
-
+	yubikey-manager
+   ]; 
+services.udev.packages = [ pkgs.yubikey-personalization ];
+services.pcscd.enable = true;
+programs.gnupg.agent = {
+  enable = true;
+  enableSSHSupport = true;
+};
   programs = {
     nix-ld = {
       enable = true;
