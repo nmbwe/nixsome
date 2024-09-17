@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ lib, config, pkgs, ... }:
 
 {
   wsl = {
@@ -6,24 +6,30 @@
     defaultUser = "JoaoLeal";
   };
 
- 
+
   environment.systemPackages = with pkgs; [
     wget
     vim
-    just 
+    just
     distrobox
-	yubikey-manager
-   ]; 
-services.udev.packages = [ pkgs.yubikey-personalization ];
-services.pcscd.enable = true;
-programs.gnupg.agent = {
-  enable = true;
-  enableSSHSupport = true;
-};
+    yubikey-manager
+    git
+    just
+    usbutils
+  ];
+  services.udev.packages = [ pkgs.yubikey-personalization ];
+  services.pcscd.enable = true;
+  hardware.gpgSmartcards.enable = true;
   programs = {
     nix-ld = {
       enable = true;
       package = pkgs.nix-ld-rs;
+    };
+    gnupg = {
+      agent = {
+        enable = true;
+        enableSSHSupport = true;
+      };
     };
   };
 
