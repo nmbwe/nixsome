@@ -12,6 +12,10 @@
     nixpkgs-fmt
     nixd
     gnupg
+    rustup
+    pkg-config
+    openssl
+    clang
   ];
   programs = {
     nix-ld = {

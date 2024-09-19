@@ -15,4 +15,3 @@ set-conf:
 
 prof-install:
     nix profile install --experimental-features 'nix-command flakes'
-    
