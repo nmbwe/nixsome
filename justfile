@@ -15,3 +15,8 @@ set-conf:
 
 prof-install:
     nix profile install --experimental-features 'nix-command flakes'
+
+set-hman:
+    rm -rf ~/.config/home-manager/*
+    cp -r home.nix ~/.config/home-manager/
+    home-manager switch
