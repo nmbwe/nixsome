@@ -24,7 +24,7 @@
     git = {
       enable = true;
       userEmail = "jgleal@protonmail.com";
-      userName = "JoaoLeal";
+      userName = "jaoleal";
       signing = {
         key = "0x80A9E51B3B06FE4A";
         signByDefault = true;
