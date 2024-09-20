@@ -6,7 +6,6 @@
     just
     distrobox
     yubikey-manager
-    git
     just
     usbutils
     nixpkgs-fmt
@@ -21,12 +20,6 @@
     nix-ld = {
       enable = true;
       package = pkgs.nix-ld-rs;
-    };
-    gnupg = {
-      agent = {
-        enable = true;
-        enableSSHSupport = true;
-      };
     };
   };
 
