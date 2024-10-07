@@ -39,5 +39,13 @@
 	export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 	gpgconf --launch gpg-agent
 	echo Haro '';
+    chromium = {	
+	enable = true;
+	extensions = [
+		{id = "ddkjiahejlhfcafbddmgiahcphecmpfh"; } #Ublock
+		{id = "ghmbeldphafepmbegfdlkpapadhbakde";} #Proton Pass
+	];
+	};
     };
+
 }

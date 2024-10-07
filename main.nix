@@ -43,6 +43,12 @@ environment.systemPackages = with pkgs; [
   networking.hostName = "nixos";
   services.udev.packages = [ pkgs.yubikey-personalization ];
 services.dbus.packages = [ pkgs.gcr ];
+security.pam.yubico = {
+   enable = true;
+   debug = true;
+   mode = "challenge-response";
+   id = [ "28625726" ];
+};
 
 services.pcscd.enable = true;
   hardware.gpgSmartcards.enable = true;
@@ -52,6 +58,14 @@ services.pcscd.enable = true;
     layout = "us";
     variant = "";
   };
+  services.udev.extraRules = ''
+      ACTION=="remove",\
+       ENV{ID_BUS}=="usb",\
+       ENV{ID_MODEL_ID}=="0407",\
+       ENV{ID_VENDOR_ID}=="1050",\
+       ENV{ID_VENDOR}=="Yubico",\
+       RUN+="${pkgs.systemd}/bin/loginctl lock-sessions"
+  '';
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
