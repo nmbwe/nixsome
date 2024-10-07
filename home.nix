@@ -44,6 +44,8 @@
 	extensions = [
 		{id = "ddkjiahejlhfcafbddmgiahcphecmpfh"; } #Ublock
 		{id = "ghmbeldphafepmbegfdlkpapadhbakde";} #Proton Pass
+		{id = "mnjggcdmjocbbbhaepdhchncahnbgone";} #Sponsor Block
+		{id = "ncmflpbbagcnakkolfpcpogheckolnad";} #Nostr Profiles 
 	];
 	};
     };
