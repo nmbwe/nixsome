@@ -5,7 +5,7 @@
     username = "jaoleal";
     homeDirectory = "/home/jaoleal";
     stateVersion = "24.05"; # Dont change.
-    packages = with pkgs; [ git ];
+    packages = with pkgs; [ git pinentry-tty gnupg];
     file = { };
     sessionVariables = { };
   };
@@ -17,7 +17,8 @@
 
       defaultCacheTtl = 34560000;
       maxCacheTtl = 34560000;
-    };
+      pinentryPackage = pkgs.pinentry-tty;        
+	};
   };
   programs = {
     git = {
@@ -25,9 +26,12 @@
       userEmail = "jgleal@protonmail.com";
       userName = "jaoleal";
       signing = {
-        key = "0xDCDC435C64AA150C176DCB7720065F33EDAD58FA";
+        key = "0xAD9A025AA978D435";
         signByDefault = true;
       };
+    };
+    gpg = {
+        enable = true;
     };
     home-manager.enable = true;
     bash.enable = true;
