@@ -25,10 +25,15 @@
       userEmail = "jgleal@protonmail.com";
       userName = "jaoleal";
       signing = {
-        key = "0x80A9E51B3B06FE4A";
+        key = "0xDCDC435C64AA150C176DCB7720065F33EDAD58FA";
         signByDefault = true;
       };
     };
     home-manager.enable = true;
-  };
+    bash.enable = true;
+    bash.bashrcExtra = ''
+	export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+	gpgconf --launch gpg-agent
+	echo Haro '';
+    };
 }
