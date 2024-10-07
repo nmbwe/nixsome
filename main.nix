@@ -1,17 +1,19 @@
 { lib, pkgs, ... }:
 {
-	imports = [ ./hardware-configuration.nix];  
+
+
+	imports = [
+./hardware-configuration.nix];  
+
 environment.systemPackages = with pkgs; [
     wget
     vim
     just
     distrobox
     yubikey-manager
-    just
     usbutils
     nixpkgs-fmt
     nixd
-    gnupg
     rustup
     pkg-config
     openssl
@@ -40,7 +42,9 @@ environment.systemPackages = with pkgs; [
   nixpkgs.config.allowUnfree = true;
   networking.hostName = "nixos";
   services.udev.packages = [ pkgs.yubikey-personalization ];
-  services.pcscd.enable = true;
+services.dbus.packages = [ pkgs.gcr ];
+
+services.pcscd.enable = true;
   hardware.gpgSmartcards.enable = true;
   networking.networkmanager.enable = true;
   time.timeZone = "America/Sao_Paulo";
