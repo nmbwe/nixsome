@@ -6,7 +6,7 @@ set-build:
     @just build
 
 build:
-    sudo nixos-rebuild switch
+    sudo nixos-rebuild switch --flake /etc/nixos/#mainConfig
 
 set-conf:
     #!/usr/bin/env bash
