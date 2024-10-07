@@ -2,8 +2,8 @@
 
 {
   home = {
-    username = "joaoleal";
-    homeDirectory = "/home/joaoleal";
+    username = "jaoleal";
+    homeDirectory = "/home/jaoleal";
     stateVersion = "24.05"; # Dont change.
     packages = with pkgs; [ git ];
     file = { };
@@ -12,7 +12,6 @@
   services = {
     gpg-agent = {
       enable = true;
-      #Enable the gpg-agent to act as a ssh-agent. 
       enableSshSupport = true;
       defaultCacheTtlSsh = 4000;
 
