@@ -5,7 +5,7 @@
     username = "jaoleal";
     homeDirectory = "/home/jaoleal";
     stateVersion = "24.05"; # Dont change.
-    packages = with pkgs; [ git pinentry-tty gnupg];
+    packages = with pkgs; [ git pinentry-tty gnupg ];
     file = { };
     sessionVariables = { };
   };
@@ -17,8 +17,8 @@
 
       defaultCacheTtl = 34560000;
       maxCacheTtl = 34560000;
-      pinentryPackage = pkgs.pinentry-tty;        
-	};
+      pinentryPackage = pkgs.pinentry-tty;
+    };
   };
   programs = {
     git = {
@@ -31,23 +31,23 @@
       };
     };
     gpg = {
-        enable = true;
+      enable = true;
     };
     home-manager.enable = true;
     bash.enable = true;
     bash.bashrcExtra = ''
-	export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
-	gpgconf --launch gpg-agent
-	echo Haro '';
-    chromium = {	
-	enable = true;
-	extensions = [
-		{id = "ddkjiahejlhfcafbddmgiahcphecmpfh"; } #Ublock
-		{id = "ghmbeldphafepmbegfdlkpapadhbakde";} #Proton Pass
-		{id = "mnjggcdmjocbbbhaepdhchncahnbgone";} #Sponsor Block
-		{id = "ncmflpbbagcnakkolfpcpogheckolnad";} #Nostr Profiles 
-	];
-	};
+      	export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+      	gpgconf --launch gpg-agent
+      	echo Haro '';
+    chromium = {
+      enable = true;
+      extensions = [
+        { id = "ddkjiahejlhfcafbddmgiahcphecmpfh"; } #Ublock
+        { id = "ghmbeldphafepmbegfdlkpapadhbakde"; } #Proton Pass
+        { id = "mnjggcdmjocbbbhaepdhchncahnbgone"; } #Sponsor Block
+        { id = "ncmflpbbagcnakkolfpcpogheckolnad"; } #Nostr Profiles 
+      ];
     };
+  };
 
 }

@@ -2,14 +2,15 @@
 {
 
 
-	imports = [
-./hardware-configuration.nix];  
+  imports = [
+    ./hardware-configuration.nix
+  ];
 
-environment.systemPackages = with pkgs; [
+  environment.systemPackages = with pkgs; [
     wget
     vim
     just
-    distrobox
+    quickemu
     yubikey-manager
     usbutils
     nixpkgs-fmt
@@ -25,37 +26,34 @@ environment.systemPackages = with pkgs; [
       package = pkgs.nix-ld-rs;
     };
   };
-
+  services.spice-vdagentd.enable = true;
   users.users.jaoleal = {
     isNormalUser = true;
     description = "Joao Leal";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-    #  thunderbird
+      #  thunderbird
     ];
   };
-  services.xserver = { 
-	enable = true;
-	desktopManager.gnome.enable = true;
-	displayManager.gdm.enable = true;
-};
-virtualisation.podman = {
-  enable = true;
-  dockerCompat = true;
-};  
-nixpkgs.config.allowUnfree = true;
+  services.xserver = {
+    enable = true;
+    desktopManager.gnome.enable = true;
+    displayManager.gdm.enable = true;
+  };
+
+  nixpkgs.config.allowUnfree = true;
   networking.hostName = "nixos";
   services.udev.packages = [ pkgs.yubikey-personalization ];
-services.dbus.packages = [ pkgs.gcr ];
-services.flatpak.enable = true; 
-	security.pam.yubico = {
-   enable = true;
-   debug = false;
-   mode = "challenge-response";
-   id = [ "28625726" ];
-};
+  services.dbus.packages = [ pkgs.gcr ];
+  services.flatpak.enable = true;
+  security.pam.yubico = {
+    enable = true;
+    debug = false;
+    mode = "challenge-response";
+    id = [ "28625726" ];
+  };
 
-services.pcscd.enable = true;
+  services.pcscd.enable = true;
   hardware.gpgSmartcards.enable = true;
   networking.networkmanager.enable = true;
   time.timeZone = "America/Sao_Paulo";
@@ -70,7 +68,7 @@ services.pcscd.enable = true;
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    };
+  };
   i18n.defaultLocale = "en_US.UTF-8";
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "pt_BR.UTF-8";
@@ -83,13 +81,14 @@ services.pcscd.enable = true;
     LC_TELEPHONE = "pt_BR.UTF-8";
     LC_TIME = "pt_BR.UTF-8";
   };
-	boot= {
-	  initrd.luks.devices."luks-8970f121-a76c-44b7-8be8-9c5ad0d4a229".device = "/dev/disk/by-uuid/8970f121-a76c-44b7-8be8-9c5ad0d4a229";
-loader = {
-		systemd-boot.enable = true;
-		efi.canTouchEfiVariables = true;
-	};};
-	  system.stateVersion = "24.05"; # Did you read the comment?
+  boot = {
+    initrd.luks.devices."luks-8970f121-a76c-44b7-8be8-9c5ad0d4a229".device = "/dev/disk/by-uuid/8970f121-a76c-44b7-8be8-9c5ad0d4a229";
+    loader = {
+      systemd-boot.enable = true;
+      efi.canTouchEfiVariables = true;
+    };
+  };
+  system.stateVersion = "24.05"; # Did you read the comment?
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 }
