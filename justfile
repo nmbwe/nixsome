@@ -10,6 +10,7 @@ build:
 
 set-conf:
     #!/usr/bin/env bash
+    sudo cp /etc/nixos/hardware-configuration.nix . 
     sudo rm -rf /etc/nixos/*
     sudo cp *.nix /etc/nixos/
 
