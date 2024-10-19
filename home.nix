@@ -1,3 +1,4 @@
+
 { config, pkgs, ... }:
 
 {
@@ -5,7 +6,7 @@
     username = "jaoleal";
     homeDirectory = "/home/jaoleal";
     stateVersion = "24.05"; # Dont change.
-    packages = with pkgs; [ git pinentry-tty gnupg ];
+    packages = with pkgs; [ git pinentry gnupg ];
     file = { };
     sessionVariables = { };
   };
@@ -17,7 +18,7 @@
 
       defaultCacheTtl = 34560000;
       maxCacheTtl = 34560000;
-      pinentryPackage = pkgs.pinentry-tty;
+      pinentryPackage = pkgs.pinentry;
     };
   };
   programs = {
@@ -26,7 +27,7 @@
       userEmail = "jgleal@protonmail.com";
       userName = "jaoleal";
       signing = {
-        key = "0xAD9A025AA978D435";
+        key = "0x681DEB6D0ED6C8E8";
         signByDefault = true;
       };
     };
@@ -45,7 +46,7 @@
         { id = "ddkjiahejlhfcafbddmgiahcphecmpfh"; } #Ublock
         { id = "ghmbeldphafepmbegfdlkpapadhbakde"; } #Proton Pass
         { id = "mnjggcdmjocbbbhaepdhchncahnbgone"; } #Sponsor Block
-        { id = "ncmflpbbagcnakkolfpcpogheckolnad"; } #Nostr Profiles 
+        { id = "ncmflpbbagcnakkolfpcpogheckolnad"; } #Nostr Profiles
       ];
     };
   };

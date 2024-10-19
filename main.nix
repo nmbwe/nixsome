@@ -46,15 +46,9 @@
   services.udev.packages = [ pkgs.yubikey-personalization ];
   services.dbus.packages = [ pkgs.gcr ];
   services.flatpak.enable = true;
-  security.pam.yubico = {
-    enable = true;
-    debug = false;
-    mode = "challenge-response";
-    id = [ "28625726" ];
-  };
-
   services.pcscd.enable = true;
   hardware.gpgSmartcards.enable = true;
+  services.tailscale.enable = true;
   networking.networkmanager.enable = true;
   time.timeZone = "America/Sao_Paulo";
   services.xserver.xkb = {
@@ -92,4 +86,3 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 }
-
