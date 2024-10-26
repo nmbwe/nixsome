@@ -20,20 +20,18 @@
     openssl
     clang
   ];
-  programs = {
-    nix-ld = {
-      enable = true;
-      package = pkgs.nix-ld-rs;
-    };
-  };
+  # Binary Cache for Haskell.nix
+  nix.settings.trusted-public-keys = [
+    "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ="
+  ];
+  nix.settings.substituters = [
+    "https://cache.iog.io"
+  ];
   services.spice-vdagentd.enable = true;
   users.users.jaoleal = {
     isNormalUser = true;
     description = "Joao Leal";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      #  thunderbird
-    ];
   };
   services.xserver = {
     enable = true;
