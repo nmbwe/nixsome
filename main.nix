@@ -17,6 +17,7 @@
     nixd
     rustup
     pkg-config
+    signal-desktop
     openssl
     clang
   ];
@@ -73,10 +74,12 @@
     LC_TELEPHONE = "pt_BR.UTF-8";
     LC_TIME = "pt_BR.UTF-8";
   };
+time.hardwareClockInLocalTime = true;
   boot = {
-    initrd.luks.devices."luks-8970f121-a76c-44b7-8be8-9c5ad0d4a229".device = "/dev/disk/by-uuid/8970f121-a76c-44b7-8be8-9c5ad0d4a229";
     loader = {
-      systemd-boot.enable = true;
+  grub.enable = true;
+  grub.devices = ["nodev"];
+grub.useOSProber = true;
       efi.canTouchEfiVariables = true;
     };
   };

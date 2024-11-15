@@ -8,26 +8,26 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
+  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usbhid" "uas" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/24700e26-7827-43d9-a7ae-8f823fdf4034";
+    { device = "/dev/disk/by-uuid/7875f780-beb6-497a-a6ee-9c6d96309df4";
       fsType = "ext4";
     };
 
-  boot.initrd.luks.devices."luks-070ba9ec-25e9-48b5-ab7f-4da9151c65ac".device = "/dev/disk/by-uuid/070ba9ec-25e9-48b5-ab7f-4da9151c65ac";
+  boot.initrd.luks.devices."luks-cc3a63d0-07c4-4c41-baf8-2337b60e260f".device = "/dev/disk/by-uuid/cc3a63d0-07c4-4c41-baf8-2337b60e260f";
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/392C-702D";
+    { device = "/dev/disk/by-uuid/D18D-E2FE";
       fsType = "vfat";
       options = [ "fmask=0077" "dmask=0077" ];
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/eb2a587e-2984-46a9-a61d-0208cdc15ae4"; }
+    [ { device = "/dev/disk/by-uuid/7f37b81b-02b0-4382-9e89-eea82b4929b1"; }
     ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
