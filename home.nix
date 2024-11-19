@@ -1,12 +1,12 @@
 
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   home = {
     username = "jaoleal";
     homeDirectory = "/home/jaoleal";
     stateVersion = "24.05"; # Dont change.
-    packages = with pkgs; [ git pinentry gnupg ];
+    packages = with pkgs; [ git zed-editor gnupg nil ];
     file = { };
     sessionVariables = { };
   };
@@ -33,6 +33,9 @@
     };
     gpg = {
       enable = true;
+	scdaemonSettings = {
+	disable-ccid = true;
+    };
     };
     home-manager.enable = true;
     bash.enable = true;
@@ -48,6 +51,22 @@
         { id = "mnjggcdmjocbbbhaepdhchncahnbgone"; } #Sponsor Block
         { id = "ncmflpbbagcnakkolfpcpogheckolnad"; } #Nostr Profiles
       ];
+    };
+    zed-editor = {
+      enable = true;
+      package = pkgs.zed-editor;
+      userSettings = {
+        lsp =  {
+          rust-analyzer = {
+            binary =  {
+              path = "/run/current-system/sw/bin/rust-analyzer";
+            };
+          };
+          nil = {
+            binary.path = "${pkgs.nil}/bin/nil";
+          };
+        };
+      };
     };
   };
 
