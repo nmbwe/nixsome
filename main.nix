@@ -77,10 +77,11 @@
 time.hardwareClockInLocalTime = true;
   boot = {
     loader = {
-  grub.enable = true;
-  grub.devices = ["nodev"];
-grub.useOSProber = true;
-      efi.canTouchEfiVariables = true;
+  	grub.enable = true;
+  	grub.device = "nodev";
+	grub.useOSProber = true;
+	grub.efiSupport = true;      	
+efi.canTouchEfiVariables = true;
     };
   };
   system.stateVersion = "24.05"; # Did you read the comment?

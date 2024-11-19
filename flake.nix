@@ -11,14 +11,16 @@
       nixDevShell = import ./nixdev.nix { pkgs = import nixpkgs { system = system; }; };
     in
     {
-      nixosConfigurations = {
+      nixosConfigurations =  rec {
         mainConfig = nixpkgs.lib.nixosSystem {
           system = system;
           modules = [
             common
           ];
-        };
-      };
+        
+	};
+	default = mainConfig;      
+    };
       devShells = {
         x86_64-linux = { default = nixDevShell; };
       };
