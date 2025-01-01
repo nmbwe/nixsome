@@ -15,10 +15,12 @@
       enable = true;
       enableSshSupport = true;
       defaultCacheTtlSsh = 4000;
-
       defaultCacheTtl = 34560000;
       maxCacheTtl = 34560000;
-      pinentryPackage = pkgs.pinentry;
+      enableBashIntegration = true;
+      enableScDaemon = true;
+      grabKeyboardAndMouse = true;
+      pinentryPackage = pkgs.pinentry-gnome3;
     };
   };
   programs = {
@@ -27,7 +29,7 @@
       userEmail = "jgleal@protonmail.com";
       userName = "jaoleal";
       signing = {
-        key = "0x681DEB6D0ED6C8E8";
+        key = "0x9AE892D482B588FA";
         signByDefault = true;
       };
     };

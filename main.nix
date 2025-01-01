@@ -10,7 +10,6 @@
     wget
     vim
     just
-    quickemu
     yubikey-manager
     usbutils
     nixpkgs-fmt
@@ -21,14 +20,6 @@
     openssl
     clang
   ];
-  # Binary Cache for Haskell.nix
-  nix.settings.trusted-public-keys = [
-    "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ="
-  ];
-  nix.settings.substituters = [
-    "https://cache.iog.io"
-  ];
-  services.spice-vdagentd.enable = true;
   users.users.jaoleal = {
     isNormalUser = true;
     description = "Joao Leal";
@@ -39,14 +30,12 @@
     desktopManager.gnome.enable = true;
     displayManager.gdm.enable = true;
   };
-
   nixpkgs.config.allowUnfree = true;
-  networking.hostName = "nixos";
+  networking.hostName = "SM8953";
   services.udev.packages = [ pkgs.yubikey-personalization ];
   services.dbus.packages = [ pkgs.gcr ];
   services.flatpak.enable = true;
   services.pcscd.enable = true;
-  hardware.gpgSmartcards.enable = true;
   services.tailscale.enable = true;
   networking.networkmanager.enable = true;
   time.timeZone = "America/Sao_Paulo";
@@ -80,7 +69,7 @@ time.hardwareClockInLocalTime = true;
   	grub.enable = true;
   	grub.device = "nodev";
 	grub.useOSProber = true;
-	grub.efiSupport = true;      	
+	grub.efiSupport = true;
 efi.canTouchEfiVariables = true;
     };
   };
