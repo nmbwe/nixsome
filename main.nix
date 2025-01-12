@@ -1,4 +1,4 @@
-{ lib, pkgs, config,  ... }:
+{ lib, pkgs, config, ... }:
 {
 
 
@@ -16,7 +16,6 @@
     nixd
     rustup
     pkg-config
-    signal-desktop
     openssl
     clang
   ];
@@ -29,7 +28,7 @@
     enable = true;
     desktopManager.gnome.enable = true;
     displayManager.gdm.enable = true;
-    videoDrivers = ["nvidia"];
+    videoDrivers = [ "nvidia" ];
   };
   nixpkgs.config.allowUnfree = true;
   networking.hostName = "SM8953";
@@ -39,7 +38,6 @@
   services.pcscd.enable = true;
   services.tailscale.enable = true;
   networking.networkmanager.enable = true;
-  hardware.graphics.enable = true;
   hardware.nvidia = {
     modesetting.enable = true;
     powerManagement.enable = true;
@@ -74,14 +72,14 @@
     LC_TELEPHONE = "pt_BR.UTF-8";
     LC_TIME = "pt_BR.UTF-8";
   };
-time.hardwareClockInLocalTime = true;
+  time.hardwareClockInLocalTime = true;
   boot = {
     loader = {
-  	grub.enable = true;
-  	grub.device = "nodev";
-	grub.useOSProber = true;
-	grub.efiSupport = true;
-efi.canTouchEfiVariables = true;
+      grub.enable = true;
+      grub.device = "nodev";
+      grub.useOSProber = true;
+      grub.efiSupport = true;
+      efi.canTouchEfiVariables = true;
     };
   };
   system.stateVersion = "24.05"; # Did you read the comment?

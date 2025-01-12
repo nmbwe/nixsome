@@ -10,9 +10,10 @@ build:
 
 set-conf:
     #!/usr/bin/env bash
-    sudo cp /etc/nixos/hardware-configuration.nix . 
+    sudo cp /etc/nixos/hardware-configuration.nix .
     sudo rm -rf /etc/nixos/*
     sudo cp *.nix /etc/nixos/
+    sudo cp flake.lock /etc/nixos/
 
 prof-install:
     nix profile install --experimental-features 'nix-command flakes'

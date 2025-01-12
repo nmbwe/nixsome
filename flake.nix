@@ -1,16 +1,20 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    pkgs.url = "github:nixos/nixpkgs/nixos-24.11";
   };
 
-  outputs = { self, nixpkgs, ... }:
+  outputs = { self, pkgs, ... }:
     let
       system = "x86_64-linux";
-      nixDevShell = import ./nixdev.nix { pkgs = import nixpkgs { system = system; }; };
+      nixDevShell = import ./nixdev.nix {
+        pkgs = import pkgs {
+          system = system;
+        };
+      };
     in
     {
       nixosConfigurations = {
-        mainConfig = nixpkgs.lib.nixosSystem {
+        mainConfig = pkgs.lib.nixosSystem {
           system = system;
           modules = [
             ./main.nix
