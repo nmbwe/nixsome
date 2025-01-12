@@ -1,4 +1,3 @@
-
 { pkgs, ... }:
 
 {
@@ -6,7 +5,7 @@
     username = "jaoleal";
     homeDirectory = "/home/jaoleal";
     stateVersion = "24.05"; # Dont change.
-    packages = with pkgs; [ git zed-editor gnupg nil ];
+    packages = with pkgs; [ git zed-editor gnupg nixpkgs-fmt nil ];
     file = { };
     sessionVariables = { };
   };
@@ -35,9 +34,9 @@
     };
     gpg = {
       enable = true;
-	scdaemonSettings = {
-	disable-ccid = true;
-    };
+      scdaemonSettings = {
+        disable-ccid = true;
+      };
     };
     home-manager.enable = true;
     bash.enable = true;
@@ -58,18 +57,33 @@
       enable = true;
       package = pkgs.zed-editor;
       userSettings = {
-        lsp =  {
+        languages = {
+          Nix = {
+            language_servers = [
+              "nil"
+              "!nixd"
+            ];
+            formatter = {
+              external =
+                {
+                  command = "nixpkgs-fmt";
+                };
+            };
+          };
+        };
+        lsp = {
           rust-analyzer = {
-            binary =  {
+            binary = {
               path = "/run/current-system/sw/bin/rust-analyzer";
             };
           };
           nil = {
-            binary.path = "${pkgs.nil}/bin/nil";
+            binary = {
+              path = "${pkgs.nil}/bin/nil";
+            };
           };
         };
       };
     };
   };
-
 }
