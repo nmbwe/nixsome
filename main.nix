@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:
+{ lib, pkgs, config,  ... }:
 {
 
 
@@ -29,6 +29,7 @@
     enable = true;
     desktopManager.gnome.enable = true;
     displayManager.gdm.enable = true;
+    videoDrivers = ["nvidia"];
   };
   nixpkgs.config.allowUnfree = true;
   networking.hostName = "SM8953";
@@ -38,6 +39,16 @@
   services.pcscd.enable = true;
   services.tailscale.enable = true;
   networking.networkmanager.enable = true;
+  hardware.graphics.enable = true;
+  hardware.nvidia = {
+    modesetting.enable = true;
+    powerManagement.enable = true;
+    powerManagement.finegrained = false;
+    open = false;
+    nvidiaSettings = true;
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
+  };
+
   time.timeZone = "America/Sao_Paulo";
   services.xserver.xkb = {
     layout = "us";
