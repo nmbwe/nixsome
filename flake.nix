@@ -6,21 +6,17 @@
   outputs = { self, nixpkgs, ... }:
     let
       system = "x86_64-linux";
-      pkgs = import nixpkgs { system = system; };
-      common = import ./main.nix { inherit pkgs; lib = pkgs.lib; };
       nixDevShell = import ./nixdev.nix { pkgs = import nixpkgs { system = system; }; };
     in
     {
-      nixosConfigurations =  rec {
+      nixosConfigurations = {
         mainConfig = nixpkgs.lib.nixosSystem {
           system = system;
           modules = [
-            common
+            ./main.nix
           ];
-        
-	};
-	default = mainConfig;      
-    };
+        };
+      };
       devShells = {
         x86_64-linux = { default = nixDevShell; };
       };
