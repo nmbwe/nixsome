@@ -22,6 +22,11 @@
       pinentryPackage = pkgs.pinentry-gnome3;
     };
   };
+  fonts.packages = with pkgs; [
+    (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
+    fira-code
+    droid-sans-mono
+  ];
   programs = {
     git = {
       enable = true;
@@ -57,6 +62,10 @@
       enable = true;
       package = pkgs.zed-editor;
       userSettings = {
+        buffer_font_family = "DroidSansMono";
+        scrollbar = {
+          show = "never";
+        };
         languages = {
           Nix = {
             language_servers = [
@@ -71,6 +80,7 @@
             };
           };
         };
+
         lsp = {
           rust-analyzer = {
             binary = {

@@ -1,7 +1,6 @@
-{ lib, pkgs, config, ... }:
+# This is the commom configs between desktop and notebook
+{ pkgs, ... }:
 {
-
-
   imports = [
     ./hardware-configuration.nix
   ];
@@ -9,6 +8,9 @@
   environment.systemPackages = with pkgs; [
     wget
     vim
+    proton-vpn-local-agent
+    protonvpn-gui
+    protonmail-desktop
     just
     yubikey-manager
     usbutils
@@ -28,24 +30,14 @@
     enable = true;
     desktopManager.gnome.enable = true;
     displayManager.gdm.enable = true;
-    videoDrivers = [ "nvidia" ];
   };
   nixpkgs.config.allowUnfree = true;
-  networking.hostName = "SM8953";
   services.udev.packages = [ pkgs.yubikey-personalization ];
   services.dbus.packages = [ pkgs.gcr ];
   services.flatpak.enable = true;
   services.pcscd.enable = true;
   services.tailscale.enable = true;
   networking.networkmanager.enable = true;
-  hardware.nvidia = {
-    modesetting.enable = true;
-    powerManagement.enable = true;
-    powerManagement.finegrained = false;
-    open = false;
-    nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
-  };
   time.timeZone = "America/Sao_Paulo";
   services.xserver.xkb = {
     layout = "us";
