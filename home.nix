@@ -2,8 +2,8 @@
 
 {
   home = {
-    username = "jaoleal";
-    homeDirectory = "/home/jaoleal";
+    username = "sm2024";
+    homeDirectory = "/home/sm2024";
     stateVersion = "24.05"; # Dont change.
     packages = with pkgs; [ git zed-editor gnupg nixpkgs-fmt nil ];
     file = { };
@@ -22,11 +22,6 @@
       pinentryPackage = pkgs.pinentry-gnome3;
     };
   };
-  fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
-    fira-code
-    droid-sans-mono
-  ];
   programs = {
     git = {
       enable = true;

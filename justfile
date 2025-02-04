@@ -1,6 +1,10 @@
 default:
     @just --list
 
+set-build-server:
+    @just set-conf
+    sudo nixos-rebuild switch --flake /etc/nixos/#server
+
 set-build-desk:
     @just set-conf
     sudo nixos-rebuild switch --flake /etc/nixos/#desktop

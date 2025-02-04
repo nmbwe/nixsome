@@ -14,7 +14,13 @@
     in
     {
       nixosConfigurations = {
-        desktop = pkgs.lib.nixosSystem {
+        server = pkgs.lib.nixosSystem {
+		system = system;
+		modules = [
+			./server.nix
+		];
+	};
+	desktop = pkgs.lib.nixosSystem {
           system = system;
           modules = [
             ./common.nix

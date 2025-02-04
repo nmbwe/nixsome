@@ -10,12 +10,18 @@
     ports = [ 22 ];
     settings = {
       PasswordAuthentication = true;
-      AllowUsers = [ "jaoleal" "sm2024" ]; # Allows all users by default. Can be [ "user1" "user2" ]
+      AllowUsers = [ "sm2024" ];
       UseDns = true;
       X11Forwarding = false;
-      PermitRootLogin = "yes"; # "yes", "without-password", "prohibit-password", "forced-commands-only", "no"
+      PermitRootLogin = "yes";
     };
   };
+  services.bitcoind.mainnet = {
+	enable = true;
+	dataDir = "/var/blockchain/";
+	configFile = "/home/sm2024/nixsome/cfg/bitcoin/bitcoin.conf";  
+ };
+
   environment.systemPackages = with pkgs; [
     wget
     vim
@@ -23,15 +29,7 @@
     yubikey-manager
     usbutils
   ];
-
-  users.users.jaoleal = {
-    isNormalUser = true;
-    description = "Joao Leal";
-    extraGroups = [ "networkmanager" "wheel" ];
-  };
-
-  users.users.sm2024 =
-    {
+  users.users.sm2024 = {
       isNormalUser = true;
       description = "Server User";
       extraGroups = [
@@ -39,15 +37,23 @@
         "wheel"
       ];
     };
+
   nixpkgs.config.allowUnfree = true;
+
   services.pcscd.enable = true;
   services.tailscale.enable = true;
+  services.udev.packages = [ pkgs.yubikey-personalization ];
+  services.dbus.packages = [ pkgs.gcr ];
+
   networking.networkmanager.enable = true;
-  time.timeZone = " America/Sao_Paulo ";
+
+  time.timeZone = "America/Sao_Paulo";
+
   services.xserver.xkb = {
     layout = "us";
-    variant = " ";
+    variant = "";
   };
+
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -56,10 +62,13 @@
     alsa.support32Bit = true;
     pulse.enable = true;
   };
-  i18n.defaultLocale = "
-      en_US.UTF-8 ";
+
+  i18n.defaultLocale = "en_US.UTF-8";
+
   time.hardwareClockInLocalTime = true;
+
   boot.loader.systemd-boot.enable = true;
+
   systemd.sleep.extraConfig = ''
     AllowSuspend=no
     AllowHibernation=no
